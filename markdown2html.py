@@ -14,8 +14,10 @@ def apply_inline_formatting(text: str) -> str:
     """Apply inline replacements: bold, italic, MD5, remove 'c'/'C'."""
     text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
     text = re.sub(r"__(.+?)__", r"<em>\1</em>", text)
-    text = re.sub(r"\[\[(.+?)\]\]", lambda m: hashlib.md5(m.group(1).encode()).hexdigest(), text)
-    text = re.sub(r"\(\((.+?)\)\)", lambda m: re.sub(r"[cC]", "", m.group(1)), text)
+    text = re.sub(r"\[\[(.+?)\]\]", lambda m: hashlib.md5
+                  (m.group(1).encode()).hexdigest(), text)
+    text = re.sub(r"\(\((.+?)\)\)", lambda m: re.sub
+                  (r"[cC]", "", m.group(1)), text)
     return text
 
 
